@@ -1,0 +1,18 @@
+version: '3.9'
+
+services:
+
+  solr-server:
+    image: solr:latest
+    ports:
+      - "8983:8983"
+    volumes:
+      - 'solr-data:/var/solr'
+
+volumes:
+  solr-data:
+    driver: local
+    driver_opts:
+      type: none
+      device: ./mnt/container_storage/solr
+      o: bind
