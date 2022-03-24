@@ -1,4 +1,4 @@
-package com.example.springsolr.domain.entity;
+package com.houarizegai.springsolr.domain.entity;
 
 import lombok.*;
 import org.apache.solr.client.solrj.beans.Field;

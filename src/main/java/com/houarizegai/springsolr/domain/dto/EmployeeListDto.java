@@ -1,4 +1,4 @@
-package com.example.springsolr.domain.dto;
+package com.houarizegai.springsolr.domain.dto;
 
 import lombok.Builder;
 import lombok.Getter;

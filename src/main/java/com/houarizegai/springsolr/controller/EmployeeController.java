@@ -1,16 +1,17 @@
-package com.example.springsolr.controller;
+package com.houarizegai.springsolr.controller;
 
-import com.example.springsolr.domain.dto.EmployeeDto;
-import com.example.springsolr.domain.dto.EmployeeListDto;
-import com.example.springsolr.domain.entity.Employee;
-import com.example.springsolr.mapper.EmployeeMapper;
-import com.example.springsolr.repository.EmployeeRepository;
+import com.houarizegai.springsolr.domain.dto.EmployeeDto;
+import com.houarizegai.springsolr.domain.dto.EmployeeListDto;
+import com.houarizegai.springsolr.domain.entity.Employee;
+import com.houarizegai.springsolr.mapper.EmployeeMapper;
+import com.houarizegai.springsolr.repository.EmployeeRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.solr.core.query.SolrPageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-@RestController("api/v1/employee")
+@RestController
+@RequestMapping("/api/v1/employees")
 @RequiredArgsConstructor
 public class EmployeeController {
 
@@ -19,7 +20,7 @@ public class EmployeeController {
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping
-    public EmployeeListDto getAllEmployee(@RequestParam int offset, int limit) {
+    public EmployeeListDto getAllEmployee(@RequestParam int offset, @RequestParam int limit) {
         SolrPageRequest pageRequest = new SolrPageRequest(offset, limit);
         return employeeMapper.mapEntitiesToDtos(employeeRepository.findAll(pageRequest).getContent());
     }

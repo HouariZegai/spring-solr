@@ -1,17 +1,18 @@
-package com.example.springsolr.mapper;
+package com.houarizegai.springsolr.mapper;
 
-import com.example.springsolr.domain.dto.EmployeeDto;
-import com.example.springsolr.domain.dto.EmployeeListDto;
-import com.example.springsolr.domain.entity.Employee;
+import com.houarizegai.springsolr.domain.dto.EmployeeDto;
+import com.houarizegai.springsolr.domain.dto.EmployeeListDto;
+import com.houarizegai.springsolr.domain.entity.Employee;
 import org.apache.commons.lang.StringUtils;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.NullValueCheckStrategy;
 
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
-@Mapper
+@Mapper(componentModel = "spring", nullValueCheckStrategy = NullValueCheckStrategy.ALWAYS)
 public interface EmployeeMapper {
 
     @Mapping(target = "id", expression = "java(stringToSafeUuid(employeeDto.getId()))")
